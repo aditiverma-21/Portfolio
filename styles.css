@@ -260,19 +260,53 @@ header {
     flex-direction: column;
     gap: 1rem;
     width: 25%;
+    height: 25%;
 }
 
 .contact-card {
-    background-color: #222;
+    height: 100px;
+    width: 150px;
+    background: transparent;
+    position: relative;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centering text */
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid rgb(90, 90, 90);
     border-radius: 18px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: rgb(114, 231, 255);
+    transition: color 0.3s ease-out, border-color 0.3s ease-out;
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
 }
-.contact-card:hover{
-    filter: drop-shadow(0 0 15px rgb(114, 231, 255));
-    transform: scale(1.1);
+
+.contact-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    content: '';
+    border-radius: 50%;
+    width: 20em;
+    height: 20em;
+    left: -5em;
+    transition: box-shadow 0.5s ease-out;
+    z-index: -1;
+}
+
+.contact-card:hover {
+    color: #000; /* Change text color to black on hover */
+    border-color: rgb(114, 231, 255);
+}
+
+.contact-card:hover::before {
+    box-shadow: inset 0 0 0 10em rgb(114, 231, 255);
 }
 
 .contact-card p {
@@ -283,10 +317,12 @@ header {
 .contact-icon {
     font-size: 2rem;
     color: #fff;
+    padding-right: 0.5em;
+    transition: color 0.3s ease-out; 
 }
 
-.contact-icon:hover {
-    color: rgb(114, 231, 255);
+.contact-card:hover .contact-icon ,.contact-card:hover p{
+    color: #000;
 }
 
 /* Projects Section */
